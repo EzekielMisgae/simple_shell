@@ -53,9 +53,9 @@ The simple_shell is designed to execute commands in a similar manner to sh, howe
 - [x] history
 
 ## Authors
-Amara Bamba | [GitHub](https://github.com/dev-amara)
+Ezekiel Alene | [GitHub](https://github.com/ezekielmisgae)
 
-Régis-Marie YAPI  | [GitHub](https://github.com/Reydigital)
+Erica Ngabire  | [GitHub](https://github.com/ricanga)
 
 ## License
 simple_shell is open source and therefore free to download and use without permission.
