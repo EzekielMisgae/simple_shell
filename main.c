@@ -5,7 +5,6 @@
  * @argc: n° of arguments
  * @argv: arguments
  * @envp: environment
- *
  * Return: 0
  */
 
