@@ -1,6 +1,5 @@
 #include "simple_shell.h"
 
-
 /**
  * token_maker - splits a string into an array of tokens
  * @str: string
