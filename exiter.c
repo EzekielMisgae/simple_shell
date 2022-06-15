@@ -4,7 +4,6 @@
  * exiter - frees memory and exits the program
  * @arr: array or args
  * @line: line read
- *
  * Return: void
  */
 
