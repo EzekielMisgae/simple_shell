@@ -49,4 +49,4 @@ int check_type(char **args, char *line);
 void init_shell(void);
 int main(int argc, char **argv, char **envp);
 
-#endif /* _SIMPLE_SHELL_H */
+#endif
