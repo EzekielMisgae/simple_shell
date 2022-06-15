@@ -1,6 +1,6 @@
 # The Simple Shell 🐚 Project
 
-This is a project is in collaboration between **Bright Mujor** and **Nike Oni**. The shell is a simple UNIX command line interpreter that replicates functionalities of the simple shell (sh). It provides an interface between the user and the kernel and executes programs. Additionals functions are also provided.
+This is a project is in collaboration between **Ezekiel Alene** and **Erica Ngabire**. The shell is a simple UNIX command line interpreter that replicates functionalities of the simple shell (sh). It provides an interface between the user and the kernel and executes programs. Additionals functions are also provided.
 
 # Description
 
