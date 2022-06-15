@@ -1,8 +1,7 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
  * print_env - prints the environment
- *
  * Return: void
  */
 
