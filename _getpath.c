@@ -2,7 +2,6 @@
 
 /**
  * _getpath - finds and returns the PATH for env
- *
  * Return: path
  */
 
