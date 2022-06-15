@@ -1,10 +1,9 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
  * ver_paths - verifies the PATH containing the command
  * @p: args
  * @command: command
- *
  * Return: null
  */
 
