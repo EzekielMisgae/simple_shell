@@ -1,73 +1,49 @@
-#include "main.h"
-
+#include "shell.h"
 /**
- * free_data - frees data structure
- *
- * @datash: data structure
- * Return: no return
+ * main - Entry point for the simple shell project created
+ * for ALX sprint one final Project.
+ * Return: 0 on success
  */
-void free_data(data_shell *datash)
+int main(void)
 {
-	unsigned int i;
+	ssize_t bytes_rd = 0; /** Bytes read from a getline*/
+	size_t bf_size = 0; /**Buffer size*/
+	char *entry = NULL, *arguments[20]; /**String of args that enters the usr*/
+	int counter = 1, vf_stat = 0, exist_stat = 0, exit_stat = 0, blt_stat = 0;
 
-	for (i = 0; datash->_environ[i]; i++)
+	_mprint("$ ", 2);/**prompt mini-shell*/
+	bytes_rd = getline(&entry, &bf_size, stdin); /**sizeof entry, o -1 (EOF))*/
+	while (bytes_rd != -1)
 	{
-		free(datash->_environ[i]);
+		if (*entry != '\n')
+		{
+			getcmd_inputs(entry, arguments);
+			if (arguments[0] != NULL)
+			{
+				exist_stat = check_file(arguments[0]);/*checks if the path entered exists*/
+				if (exist_stat != 0)/**Did not find the file*/
+				{
+					vf_stat = get_path(arguments);
+					if (vf_stat == 0)
+						exit_stat = execute(arguments), free(entry), free(*arguments);
+					else
+					{
+					blt_stat = getbuiltins(arguments, exit_stat);
+					if (blt_stat != 0)
+						exit_stat = p_error(arguments, counter), free(entry);
+					}
+				}
+				else /**Found the file*/
+					exit_stat = execute(arguments), free(entry);
+			}
+			else
+				free(entry);
+		}
+		else if (*entry == '\n')
+			free(entry);
+		entry = NULL, counter++;
+		_mprint("$ ", 2), bytes_rd = getline(&entry, &bf_size, stdin);
 	}
-
-	free(datash->_environ);
-	free(datash->pid);
-}
-
-/**
- * set_data - Initialize data structure
- *
- * @datash: data structure
- * @av: argument vector
- * Return: no return
- */
-void set_data(data_shell *datash, char **av)
-{
-	unsigned int i;
-
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
-
-	for (i = 0; environ[i]; i++)
-		;
-
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
-
-	for (i = 0; environ[i]; i++)
-	{
-		datash->_environ[i] = _strdup(environ[i]);
-	}
-
-	datash->_environ[i] = NULL;
-	datash->pid = aux_itoa(getpid());
-}
-
-/**
- * main - Entry point
- *
- * @ac: argument count
- * @av: argument vector
- *
- * Return: 0 on success.
- */
-int main(int ac, char **av)
-{
-	data_shell datash;
-	(void) ac;
-
-	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
-		return (255);
-	return (datash.status);
+	free_mem(entry);
+	return (exit_stat);
 }

@@ -1,57 +1,80 @@
-=======
-#                            Simple Shell Project 
+# The Simple Shell 🐚 Project
 
-# Simple Shell 
-###                           Language Used: C
-###                          1. Participants:Dovine Owuor and,
-#                            2. Oke Oletunji
+This is a project is in collaboration between **Bright Mujor** and **Nike Oni**. The shell is a simple UNIX command line interpreter that replicates functionalities of the simple shell (sh). It provides an interface between the user and the kernel and executes programs. Additionals functions are also provided.
+
+# Description
+
+The "Simple_shell" is a program that can be compiled and launched from the command line, where its main function is to execute commands read from the standard input. It contains some of the basic features and functions found in the various shell programs like Kernel commands and builtin commands.
+
+# Features
+
+1. DIsplay a prompt and wait for the user to type a command. A command-line always ends with a new line.
+2. The prompt is displayed again each time a command has been executed.
+3. The command lines are simple, no semicolons, no pipes, no redirections, or any other advanced features.
+4. The command lines are made only of one word.No arguement will be passed to the programs.
+5. If an executable is not found the shell prints an error message and displayu the prompt again.
+
+# Compilation
+Shell will be compiled with `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
+
+*Once the compilation is sucessful, you can execute the program with `./hsh`, To exit the program,Run $ `Exit`.
+
+This simple shell supports all shell commands in the PATH environment, including, but not limited to: `cat', `ls`, 'w'.
+
+This will compile all the '.c' files and change the output's name to 'hsh'.
+
+# Testing  🔨
+*Shell will work in interactive mode in the format below:
+
+$ `./hsh`
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) `exit`
+$
+
+* `./hsh` and then type the commands that you want to execute
+* You can type a command and the prompt appear show again
+
+** Also in non-interactive mode:
+
+$  `echo "/bin/ls" | ./hsh`
+hsh main.c shell.c test_ls_2
+$
+$ `cat test_ls_2`
+/bin/ls
+/bin/ls
+$
+$ `cat test_ls_2 | ./hsh`
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+
+* Echo "command" | ./hsh, command is the command that you want to execute
+* Each time that you execute a command, the shell close
 
 
-### Description
+# Builtin Commands
 
->>>>>>> d270c67db23f6c57af6b1a31a9513f8ee55e2261
-This is a simple UNIX command interpreter that replicates functionalities of the simple shell (sh). Additional functions are also included. This program is written entirely in C as a milestone project under the  ALX Africa Software Engineering Programme, 2022.
+This shell supports the next builtin commands:
 
-### Installation
+cd - change directory
 
-Clone this repository into your working directory. For best results, files should be compiled with GCC and the following flags: -Wall -Wextra -Werror -pedantic -std=gnu89
+env - list the current environment variables
 
-### Usage
+exit - exit the shell
 
-After compilation, the resulting program can run stand-alone, either in interactive or non-interactive mode.
+help - show help for a builtin command
 
-#### Interactive Mode
+pwd - Print the absolute pathname of the current working directory
 
-In interactive mode, simply run the program and wait for the prompt to appear. From there, you can type commands freely, exiting with either the "exit" command or ctrl-D.
+unsetenv - Remove an environment variable
 
-#### Non-Interactive Mode
-
-In non-interactive mode, echo your desired command and pipe it into the program like this:
-
-```sh
-echo "ls" | ./shell
-```
-
-In non-interactive mode, the program will exit after finishing your desired command(s).
-
-#### Included Built-Ins
-
-Our shell has support for the following built-in commands:
-
-| Command             | Definition                                                                                |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| exit [n]            | Exit the shell, with an optional exit status, n.                                          |
-| env                 | Print the environment.                                                                    |
-| setenv [var][value] | Set an environment variable and value. If the variable exists, the value will be updated. |
-| unsetenv [var]      | Remove an environment variable.                                                           |
-| cd [dir]            | Change the directory.                                                                     |
-| help [built-in]     | Read documentation for a built-in.                                                        |
+# Delimit and comment commands
+1. The semicolon - ;. command separator that allows to run a command on a single line placing the semicolon between
+   each command.
+2. The command number - hash. Allows a word beginning with # and all remaining characters on that line to be ignored.
 
 
-### Credits
-
-<<<<<<< HEAD
-Code written by [Dovine Owuor]([https://www.github.com/Dovineowuor]) and [Oke Oletunji]([https://www.github.com/Bestboontech]).
-=======
-Code written by [Dovine Owuor](https://www.github.com/Dovineowuor) and [Oke Oletunji](https://www.github.com/Bestboontech).
->>>>>>> d270c67db23f6c57af6b1a31a9513f8ee55e2261
+# AUTHORS
+The `AUTHORS` file contains the details of all the individuals that contributed to this shell project
