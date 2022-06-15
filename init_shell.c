@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
  * init_shell - starts the shell if it’s in interactive mode
