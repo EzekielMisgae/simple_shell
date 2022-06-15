@@ -4,7 +4,6 @@
  * exec_cmd - executes a command
  * @command: command to execute
  * @args: arguments
- *
  * Return: void
  */
 
