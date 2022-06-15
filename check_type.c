@@ -4,7 +4,6 @@
  * check_type - checks if command is a builtin or an executable path.
  * @args: arguments
  * @line: line read
- *
  * Return: 1 if executed
  */
 
