@@ -4,6 +4,7 @@
  * @global_var: input variable to extract from environment
  * Return: Pointer to the content of a variable, or NULL if fails
  */
+
 char *_getenv(char *global_var)
 {
 	int j = 0;
