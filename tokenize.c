@@ -1,38 +1,50 @@
 #include "simple_shell.h"
 
-/**
- * tokenize - tokenizes a buffer with a delimiter
- * @buffer: buffer to tokenize
- * @delimiter: delimiter to tokenize along
- *
- * Return: pointer to an array of pointers to the tokens
- */
-char **tokenize(char *buffer, char *delimiter)
-{
-	char **tokens = NULL;
-	size_t i = 0, mcount = 10;
 
-	if (buffer == NULL)
+/**
+ * token_maker - splits a string into an array of tokens
+ * @str: string
+ *
+ * Return: array of tokens
+ */
+
+char **token_maker(char *str)
+{
+	size_t idx = 0, io = 0;
+	int tkn = 1;
+	char **tokens = NULL;
+	char *buf = NULL, *token = NULL, *bufptr = NULL, *delim = " :\t\r\n";
+
+	buf = _strdup(str);
+	if (buf == NULL)
 		return (NULL);
-	tokens = malloc(sizeof(char *) * mcount);
-	if (tokens == NULL)
+	bufptr = buf;
+
+	while (*bufptr)
 	{
-		perror("Fatal Error");
-		return (NULL);
-	}
-	while ((tokens[i] = new_strtok(buffer, delimiter)) != NULL)
-	{
-		i++;
-		if (i == mcount)
+		if (_strchr(delim, *bufptr) != NULL && io == 0)
 		{
-			tokens = _realloc(tokens, &mcount);
-			if (tokens == NULL)
-			{
-				perror("Fatal Error");
-				return (NULL);
-			}
+			tkn++;
+			io = 1;
 		}
-		buffer = NULL;
+		else if (_strchr(delim, *bufptr) == NULL && io == 1)
+			io = 0;
+		bufptr++;
 	}
+	tokens = malloc(sizeof(char *) * (tkn + 1));
+	token = strtok(buf, delim);
+	while (token)
+	{
+		tokens[idx] = _strdup(token);
+		if (tokens[idx] == NULL)
+		{
+			free(tokens);
+			return (NULL);
+		}
+		token = strtok(NULL, delim);
+		idx++;
+	}
+	tokens[idx] = NULL;
+	free(buf);
 	return (tokens);
 }
